@@ -18,7 +18,7 @@
     "commit": "cz",
     "lint": "eslint --fix --no-error-on-unmatched-pattern \"**/*.js\"",
     "format": "prettier -w .",
-    "test": "jest ./test",
+    "test": "jest  --coverage ./test",
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
@@ -31,8 +31,10 @@
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.2",
     "jest": "^29.3.1",
+    "pg": "^8.8.0",
     "prettier": "^2.8.1",
-    "semantic-release": "^19.0.5"
+    "semantic-release": "^19.0.5",
+    "sequelize": "^6.28.0"
   },
   "engines": {
     "node": ">=14.19.1",
@@ -57,7 +59,10 @@
       "**/*.test.js"
     ],
     "rules": {
-      "semi": ["error", "always"]
+      "semi": [
+        "error",
+        "always"
+      ]
     }
   },
   "release": {
@@ -80,5 +85,9 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "none"
   }
 }
