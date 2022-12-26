@@ -1,0 +1,84 @@
+{
+  "name": "sequelize-strapi-connector",
+  "version": "0.0.0-development",
+  "author": {
+    "name": "Munir AP",
+    "url": "https://munirapp.github.io"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lontarscript/sequelize-strapi-connector"
+  },
+  "funding": {
+    "type": "buymeacoffee",
+    "url": "https://www.buymeacoffee.com/munirapp"
+  },
+  "scripts": {
+    "commit": "cz",
+    "lint": "eslint --fix --no-error-on-unmatched-pattern \"**/*.js\"",
+    "format": "prettier -w .",
+    "test": "jest ./test",
+    "semantic-release": "semantic-release"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "eslint": "^8.30.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.2",
+    "jest": "^29.3.1",
+    "prettier": "^2.8.1",
+    "semantic-release": "^19.0.5"
+  },
+  "engines": {
+    "node": ">=14.19.1",
+    "npm": ">=6.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "commonjs": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": "standard",
+    "parserOptions": {
+      "ecmaVersion": "latest"
+    },
+    "ignorePatterns": [
+      "**/*.test.js"
+    ],
+    "rules": {
+      "semi": ["error", "always"]
+    }
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits"
+        }
+      ],
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
+}
