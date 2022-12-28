@@ -1,0 +1,23 @@
+name: Publish Packages
+run-name: Publish actions
+on:
+  push:
+    branches: main
+jobs:
+  test-and-publish:
+    name: Testing and Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.2.0
+      - uses: actions/setup-node@v3.5.1
+        with:
+          node-version: '16'
+      - run: npm ci
+        name: clean install dependencies
+      - run: npm test
+        name: run unit tests
+      - run: npx semantic-release
+        name: run semantic release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN  }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN  }}
