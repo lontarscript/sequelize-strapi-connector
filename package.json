@@ -67,6 +67,16 @@
       "curly": [
         "error",
         "multi"
+      ],
+      "indent": [
+        "error",
+        2,
+        {
+          "ignoredNodes": [
+            "ConditionalExpression",
+            "MemberExpression"
+          ]
+        }
       ]
     }
   },
@@ -93,6 +103,8 @@
   },
   "prettier": {
     "singleQuote": true,
-    "trailingComma": "none"
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "useTabs": false
   }
 }
