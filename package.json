@@ -74,7 +74,8 @@
         {
           "ignoredNodes": [
             "ConditionalExpression",
-            "MemberExpression"
+            "MemberExpression",
+            "CallExpression"
           ]
         }
       ]
