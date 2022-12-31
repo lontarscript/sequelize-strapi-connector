@@ -1,0 +1,18 @@
+{
+  "postgres": {
+    "STRING": "string",
+    "CHAR": "string",
+    "TEXT": "text",
+    "INTEGER": "integer",
+    "BIGINT": "biginteger",
+    "NUMERIC": "numeric",
+    "FLOAT": "float",
+    "ENUM": "enumeration",
+    "DATEONLY": "date",
+    "DATE": "datetime",
+    "TIME": "time",
+    "BOOLEAN": "boolean",
+    "JSON": "json",
+    "JSONB": "json"
+  }
+}
