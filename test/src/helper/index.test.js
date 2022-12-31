@@ -7,18 +7,24 @@ describe('test function helper', () => {
     const textExample1 = {};
     const textExample2 = [];
     const textExample3 = true;
+    const textExample4 = 1;
+    const textExample5 = 2;
 
     // When
     const isPlural = helper.isPlural(textExample);
     const singular = helper.makeSingular(textExample1);
     const plural = helper.makePlural(textExample2);
     const capitalize = helper.capitalizeFirstLetter(textExample3);
+    const removePattern = helper.removePattern(textExample4);
+    const addPattern = helper.removePattern(textExample5);
 
     // Then
     expect(isPlural).toStrictEqual(false);
     expect(singular).toStrictEqual('');
     expect(plural).toStrictEqual('');
     expect(capitalize).toStrictEqual('');
+    expect(removePattern).toStrictEqual('');
+    expect(addPattern).toStrictEqual('');
   });
 
   it('should return certain value when passing valid arguments', () => {
@@ -28,6 +34,9 @@ describe('test function helper', () => {
     const textExample2 = 'patient';
     const textExample3 = 'hello';
     const textExample4 = 'hello worlds!';
+    const textExample5 = 'strapiType strapiMediaType';
+    const textExample6 = 'allowedStrapiMediaType';
+    const textExample7 = 'allowedMediaType type dataType';
 
     // When
     const isPlural = helper.isPlural(textExample);
@@ -35,6 +44,9 @@ describe('test function helper', () => {
     const plural = helper.makePlural(textExample2);
     const capitalize = helper.capitalizeFirstLetter(textExample3);
     const capitalize2 = helper.capitalizeFirstLetter(textExample4);
+    const removePattern = helper.removePattern(textExample5, 'strapi');
+    const removePattern2 = helper.removePattern(textExample6, 'strapi');
+    const addPattern = helper.addPattern(textExample7, 'strapi');
 
     // Then
     expect(isPlural).toStrictEqual(true);
@@ -42,5 +54,10 @@ describe('test function helper', () => {
     expect(plural).toStrictEqual('patients');
     expect(capitalize).toStrictEqual('Hello');
     expect(capitalize2).toStrictEqual('Hello Worlds!');
+    expect(removePattern).toStrictEqual('type mediaType');
+    expect(removePattern2).toStrictEqual('allowedMediaType');
+    expect(addPattern).toStrictEqual(
+      'strapiAllowedMediaType strapiType strapiDataType'
+    );
   });
 });
