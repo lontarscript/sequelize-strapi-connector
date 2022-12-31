@@ -20,5 +20,17 @@ module.exports = {
    * @returns {String}
    */
   makeSingular: (txt) =>
-    typeof txt === 'string' ? txt.substring(0, txt.split('').length - 1) : ''
+    typeof txt === 'string' ? txt.substring(0, txt.split('').length - 1) : '',
+  /**
+   * Capitalize first letter of each word that separated by spaces
+   * @param {*} txt
+   * @returns {String}
+   */
+  capitalizeFirstLetter: (txt) =>
+    typeof txt === 'string'
+      ? txt
+          .split(' ')
+          .map((item) => `${item.charAt(0).toUpperCase()}${item.slice(1)}`)
+          .join(' ')
+      : ''
 };

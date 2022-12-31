@@ -6,16 +6,19 @@ describe('test function helper', () => {
     const textExample = false;
     const textExample1 = {};
     const textExample2 = [];
+    const textExample3 = true;
 
     // When
     const isPlural = helper.isPlural(textExample);
     const singular = helper.makeSingular(textExample1);
     const plural = helper.makePlural(textExample2);
+    const capitalize = helper.capitalizeFirstLetter(textExample3);
 
     // Then
     expect(isPlural).toStrictEqual(false);
     expect(singular).toStrictEqual('');
     expect(plural).toStrictEqual('');
+    expect(capitalize).toStrictEqual('');
   });
 
   it('should return certain value when passing valid arguments', () => {
@@ -23,15 +26,21 @@ describe('test function helper', () => {
     const textExample = 'doctors';
     const textExample1 = 'users';
     const textExample2 = 'patient';
+    const textExample3 = 'hello';
+    const textExample4 = 'hello worlds!';
 
     // When
     const isPlural = helper.isPlural(textExample);
     const singular = helper.makeSingular(textExample1);
     const plural = helper.makePlural(textExample2);
+    const capitalize = helper.capitalizeFirstLetter(textExample3);
+    const capitalize2 = helper.capitalizeFirstLetter(textExample4);
 
     // Then
     expect(isPlural).toStrictEqual(true);
     expect(singular).toStrictEqual('user');
     expect(plural).toStrictEqual('patients');
+    expect(capitalize).toStrictEqual('Hello');
+    expect(capitalize2).toStrictEqual('Hello Worlds!');
   });
 });
