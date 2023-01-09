@@ -19,7 +19,7 @@
     "commit": "cz",
     "lint": "eslint --fix --no-error-on-unmatched-pattern \"**/*.js\"",
     "format": "prettier -w .",
-    "test": "jest  --coverage ./test",
+    "test": "jest --runInBand --coverage ./test",
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
