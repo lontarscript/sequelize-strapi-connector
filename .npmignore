@@ -1,3 +1,5 @@
 test
 .husky
 .gitignore
+coverage
+.github
