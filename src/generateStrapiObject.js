@@ -27,7 +27,7 @@ module.exports = (obj, info) => {
     throw new Error('table name and database info should provided');
 
   // initialize new object with deep copy
-  const newObj = structuredClone(DEFAULT_STRAPI_COLLECTION_OBJECT);
+  const newObj = JSON.parse(JSON.stringify(DEFAULT_STRAPI_COLLECTION_OBJECT));
 
   newObj.info.singularName = helper.isPlural(info.tableName)
     ? helper.makeSingular(info.tableName)
