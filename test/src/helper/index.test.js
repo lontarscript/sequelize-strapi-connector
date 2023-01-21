@@ -9,6 +9,7 @@ describe('test function helper', () => {
     const textExample3 = true;
     const textExample4 = 1;
     const textExample5 = 2;
+    const textExample6 = 'non json string';
 
     // When
     const isPlural = helper.isPlural(textExample);
@@ -17,6 +18,7 @@ describe('test function helper', () => {
     const capitalize = helper.capitalizeFirstLetter(textExample3);
     const removePattern = helper.removePattern(textExample4);
     const addPattern = helper.removePattern(textExample5);
+    const jsonParse = helper.safeJSONParse(textExample6);
 
     // Then
     expect(isPlural).toStrictEqual(false);
@@ -25,6 +27,7 @@ describe('test function helper', () => {
     expect(capitalize).toStrictEqual('');
     expect(removePattern).toStrictEqual('');
     expect(addPattern).toStrictEqual('');
+    expect(jsonParse).toStrictEqual(false);
   });
 
   it('should return certain value when passing valid arguments', () => {
@@ -37,6 +40,7 @@ describe('test function helper', () => {
     const textExample5 = 'strapiType strapiMediaType';
     const textExample6 = 'allowedStrapiMediaType';
     const textExample7 = 'allowedMediaType type dataType';
+    const textExample8 = '{"name": "JohnDoe", "age": 10}';
 
     // When
     const isPlural = helper.isPlural(textExample);
@@ -47,6 +51,7 @@ describe('test function helper', () => {
     const removePattern = helper.removePattern(textExample5, 'strapi');
     const removePattern2 = helper.removePattern(textExample6, 'strapi');
     const addPattern = helper.addPattern(textExample7, 'strapi');
+    const jsonParse = helper.safeJSONParse(textExample8);
 
     // Then
     expect(isPlural).toStrictEqual(true);
@@ -59,5 +64,6 @@ describe('test function helper', () => {
     expect(addPattern).toStrictEqual(
       'strapiAllowedMediaType strapiType strapiDataType'
     );
+    expect(jsonParse).toMatchObject({ name: 'JohnDoe', age: 10 });
   });
 });
