@@ -74,11 +74,25 @@ const addPattern = (txt, pattern) =>
         .join(' ')
     : '';
 
+/**
+ * Safe parse JSON with catching error
+ * @param {String} jsonString
+ * @returns {Object | Boolean}
+ */
+const safeJSONParse = (jsonString) => {
+  try {
+    return JSON.parse(jsonString);
+  } catch (_) {
+    return false;
+  }
+};
+
 module.exports = {
   isPlural,
   makePlural,
   makeSingular,
   capitalizeFirstLetter,
   removePattern,
-  addPattern
+  addPattern,
+  safeJSONParse
 };
