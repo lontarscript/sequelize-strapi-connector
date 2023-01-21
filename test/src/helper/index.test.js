@@ -10,6 +10,7 @@ describe('test function helper', () => {
     const textExample4 = 1;
     const textExample5 = 2;
     const textExample6 = 'non json string';
+    const textExample7 = null;
 
     // When
     const isPlural = helper.isPlural(textExample);
@@ -19,6 +20,7 @@ describe('test function helper', () => {
     const removePattern = helper.removePattern(textExample4);
     const addPattern = helper.removePattern(textExample5);
     const jsonParse = helper.safeJSONParse(textExample6);
+    const jsonParse2 = helper.safeJSONParse(textExample7);
 
     // Then
     expect(isPlural).toStrictEqual(false);
@@ -28,6 +30,7 @@ describe('test function helper', () => {
     expect(removePattern).toStrictEqual('');
     expect(addPattern).toStrictEqual('');
     expect(jsonParse).toStrictEqual(false);
+    expect(jsonParse2).toStrictEqual(false);
   });
 
   it('should return certain value when passing valid arguments', () => {
