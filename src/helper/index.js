@@ -81,6 +81,7 @@ const addPattern = (txt, pattern) =>
  */
 const safeJSONParse = (jsonString) => {
   try {
+    if (!jsonString || typeof jsonString !== 'string') return false;
     return JSON.parse(jsonString);
   } catch (_) {
     return false;
