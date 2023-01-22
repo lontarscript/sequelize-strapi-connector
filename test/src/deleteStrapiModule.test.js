@@ -65,4 +65,11 @@ describe('test function deleteStrapiModule', () => {
     expect(moduleBeforeDelete).toBe(true);
     expect(moduleAfterDelete).toBe(false);
   });
+
+  afterAll(() => {
+    fs.rmSync(path.resolve(__dirname, 'fixtures', 'src'), {
+      force: true,
+      recursive: true
+    });
+  });
 });
