@@ -1,0 +1,18 @@
+{
+  "string": "STRING",
+  "text": "TEXT",
+  "email": "STRING",
+  "richtext": "TEXT",
+  "password": "STRING",
+  "integer": "INTEGER",
+  "biginteger": "BIGINT",
+  "decimal": "DECIMAL",
+  "float": "FLOAT",
+  "enumeration": "ENUM",
+  "date": "DATEONLY",
+  "datetime": "DATE",
+  "time": "TIME",
+  "boolean": "BOOLEAN",
+  "json": "JSON",
+  "uid": "UUID"
+}
