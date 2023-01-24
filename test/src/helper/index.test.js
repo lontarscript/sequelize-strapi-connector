@@ -69,4 +69,30 @@ describe('test function helper', () => {
     );
     expect(jsonParse).toMatchObject({ name: 'JohnDoe', age: 10 });
   });
+
+  it('test function extractArgs', () => {
+    // Given
+    const exampleArgs = [null, null, '--help'];
+    const exampleArgs2 = [
+      null,
+      null,
+      '--strapi_to_sequelize',
+      '--input',
+      'example/strapi_dir',
+      '--output',
+      'example/sequelize_dir'
+    ];
+
+    // When
+    const args = helper.extractArgs(exampleArgs);
+    const args2 = helper.extractArgs(exampleArgs2);
+
+    // Then
+    expect(args).toMatchObject({ '--help': true });
+    expect(args2).toMatchObject({
+      '--strapi_to_sequelize': true,
+      '--input': 'example/strapi_dir',
+      '--output': 'example/sequelize_dir'
+    });
+  });
 });
