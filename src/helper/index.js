@@ -88,6 +88,35 @@ const safeJSONParse = (jsonString) => {
   }
 };
 
+/**
+ * Check is next array item argument exists and defined as arguments
+ * @param {String} itemArr
+ * @returns {String | Boolean}
+ */
+const isExistsAndNotMatch = (itemArr) =>
+  itemArr && !/^--\w+$/.test(itemArr) ? itemArr : true;
+
+/**
+ * Reduce and build object arguments
+ * @param {Object} prev
+ * @param {String} curr
+ * @param {Number} i
+ * @param {Object} arr
+ * @returns {Object}
+ */
+const reduceArgs = (prev, curr, i, arr) =>
+  /^--\w+$/.test(curr)
+    ? { ...prev, [curr]: isExistsAndNotMatch(arr[i + 1]) }
+    : prev;
+
+/**
+ * Extract arguments from process.argv
+ * @param {Object} argv
+ * @returns {Object}
+ */
+const extractArgs = (argv) =>
+  argv?.length > 2 ? argv.slice(2).reduce(reduceArgs, {}) : null;
+
 module.exports = {
   isPlural,
   makePlural,
@@ -95,5 +124,6 @@ module.exports = {
   capitalizeFirstLetter,
   removePattern,
   addPattern,
-  safeJSONParse
+  safeJSONParse,
+  extractArgs
 };
