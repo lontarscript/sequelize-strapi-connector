@@ -57,7 +57,7 @@
       "ecmaVersion": "latest"
     },
     "ignorePatterns": [
-      "**/*.test.js"
+      "test/*"
     ],
     "rules": {
       "semi": [
@@ -107,5 +107,9 @@
     "trailingComma": "none",
     "tabWidth": 2,
     "useTabs": false
+  },
+  "dependencies": {
+    "@babel/generator": "^7.20.7",
+    "@babel/parser": "^7.20.7"
   }
 }
