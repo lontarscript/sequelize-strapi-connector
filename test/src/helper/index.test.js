@@ -95,4 +95,30 @@ describe('test function helper', () => {
       '--output': 'example/sequelize_dir'
     });
   });
+
+  it('test function validateArgs', () => {
+    // Given
+    const allowedArgs = { '-i': 'string', '-o': 'string', '-h': 'boolean' };
+    const exampleArgs = { '-h': true, '-i': 'test.csv', '-o': 'output.csv' };
+    const exampleArgs2 = { '-h': 'test', '-i': true, '-o': 2 };
+    const exampleArgs3 = { '-z': true };
+    const exampleArgs4 = {
+      '-h': true,
+      '-i': 'test.csv',
+      '-o': 'output.csv',
+      '-z': true
+    };
+
+    // When
+    const result = helper.validateArgs(exampleArgs, allowedArgs);
+    const result2 = helper.validateArgs(exampleArgs2, allowedArgs);
+    const result3 = helper.validateArgs(exampleArgs3, allowedArgs);
+    const result4 = helper.validateArgs(exampleArgs4, allowedArgs);
+
+    // Then
+    expect(result).toBe(true);
+    expect(result2).toBe(false);
+    expect(result3).toBe(false);
+    expect(result4).toBe(false);
+  });
 });
