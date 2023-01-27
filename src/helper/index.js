@@ -117,6 +117,19 @@ const reduceArgs = (prev, curr, i, arr) =>
 const extractArgs = (argv) =>
   argv?.length > 2 ? argv.slice(2).reduce(reduceArgs, {}) : null;
 
+/**
+ * Validate arguments object based on rules boject
+ * @param {Object} args
+ * @param {Object} allowedArgs
+ * @returns {Boolean}
+ */
+const validateArgs = (args, allowedArgs) =>
+  /*  eslint-disable valid-typeof */
+  Object.entries(args).every(
+    (item) =>
+      allowedArgs?.[item[0]] && typeof item[1] === allowedArgs?.[item[0]]
+  );
+
 module.exports = {
   isPlural,
   makePlural,
@@ -125,5 +138,6 @@ module.exports = {
   removePattern,
   addPattern,
   safeJSONParse,
-  extractArgs
+  extractArgs,
+  validateArgs
 };
