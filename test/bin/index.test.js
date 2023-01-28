@@ -2,7 +2,26 @@ const path = require('path');
 const { exec } = require('child_process');
 
 describe('test bin/index.js', () => {
-  test('test helper command', async () => {
+  test('should print certain message when get wrong arguments', async () => {
+    // Given
+    const EXPECTED_MESSAGE =
+      'not valid arguments, see: `sequelize-strapi-connector --help`';
+
+    // When
+    const command = exec(
+      `node ${path.resolve(__dirname, '../../bin/index.js')} --false-arguments`
+    );
+    const getCommandOuput = (child) =>
+      new Promise((resolve) =>
+        child.stderr.on('data', (data) => resolve(data.toString().trim()))
+      );
+    const output = await getCommandOuput(command);
+
+    // Then
+    expect(output).toBe(EXPECTED_MESSAGE);
+  });
+
+  test('should print help message', async () => {
     // Given
     const EXPECTED_MESSAGE_HELPER = `Usage: sequelize-strapi-connector [TYPE_COMMAND] [INPUT_ARGUMENTS] [INPUT_FILE_PATH] [OUTPUT_ARGUMENTS] [OUTPUT_FILE_PATH]
 Example: sequelize-strapi-connector --strapi_to_sequelize --input /project/strapi --output /project/sequelize
