@@ -125,10 +125,12 @@ const extractArgs = (argv) =>
  */
 const validateArgs = (args, allowedArgs) =>
   /*  eslint-disable valid-typeof */
-  Object.entries(args).every(
-    (item) =>
-      allowedArgs?.[item[0]] && typeof item[1] === allowedArgs?.[item[0]]
-  );
+  Object.entries(args)?.length
+    ? Object.entries(args).every(
+        (item) =>
+          allowedArgs?.[item[0]] && typeof item[1] === allowedArgs?.[item[0]]
+      )
+    : false;
 
 module.exports = {
   isPlural,

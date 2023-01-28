@@ -118,15 +118,18 @@ describe('test function helper', () => {
       '--input': 'project/sequelize'
     };
     const exampleArgs3 = { '-h': 'test', '-i': true, '-o': 2 };
+    const exampleArgs4 = {};
 
     // When
     const result = helper.validateArgs(exampleArgs, ALLOWED_ARGS);
     const result2 = helper.validateArgs(exampleArgs2, ALLOWED_ARGS);
     const result3 = helper.validateArgs(exampleArgs3, ALLOWED_ARGS);
+    const result4 = helper.validateArgs(exampleArgs4, ALLOWED_ARGS);
 
     // Then
     expect(result).toBe(true);
     expect(result2).toBe(true);
     expect(result3).toBe(false);
+    expect(result4).toBe(false);
   });
 });

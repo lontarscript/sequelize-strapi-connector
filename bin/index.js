@@ -27,10 +27,12 @@ const main = async () => {
   const args = helper.extractArgs(process.argv);
 
   // validate args
-  if (!helper.validateArgs(args, ALLOWED_ARGS))
-    console.log(
+  if (!helper.validateArgs(args, ALLOWED_ARGS)) {
+    console.error(
       'not valid arguments, see: `sequelize-strapi-connector --help`'
     );
+    process.exit(1);
+  }
 
   // display help message
   if (args?.['--help']) {
