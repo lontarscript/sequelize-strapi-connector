@@ -98,27 +98,35 @@ describe('test function helper', () => {
 
   it('test function validateArgs', () => {
     // Given
-    const allowedArgs = { '-i': 'string', '-o': 'string', '-h': 'boolean' };
-    const exampleArgs = { '-h': true, '-i': 'test.csv', '-o': 'output.csv' };
-    const exampleArgs2 = { '-h': 'test', '-i': true, '-o': 2 };
-    const exampleArgs3 = { '-z': true };
-    const exampleArgs4 = {
-      '-h': true,
-      '-i': 'test.csv',
-      '-o': 'output.csv',
-      '-z': true
+    const ALLOWED_ARGS = {
+      '--help': 'boolean',
+      '--sequelize_to_strapi': 'boolean',
+      '--strapi_to_sequelize': 'boolean',
+      '--input': 'string',
+      '--output': 'string'
     };
+    const exampleArgs = {
+      '--help': true,
+      '--strapi_to_sequelize': true,
+      '--input': 'project/strapi',
+      '--output': 'project/sequelize'
+    };
+    const exampleArgs2 = {
+      '--help': true,
+      '--sequelize_to_strapi': true,
+      '--output': 'project/strapi',
+      '--input': 'project/sequelize'
+    };
+    const exampleArgs3 = { '-h': 'test', '-i': true, '-o': 2 };
 
     // When
-    const result = helper.validateArgs(exampleArgs, allowedArgs);
-    const result2 = helper.validateArgs(exampleArgs2, allowedArgs);
-    const result3 = helper.validateArgs(exampleArgs3, allowedArgs);
-    const result4 = helper.validateArgs(exampleArgs4, allowedArgs);
+    const result = helper.validateArgs(exampleArgs, ALLOWED_ARGS);
+    const result2 = helper.validateArgs(exampleArgs2, ALLOWED_ARGS);
+    const result3 = helper.validateArgs(exampleArgs3, ALLOWED_ARGS);
 
     // Then
     expect(result).toBe(true);
-    expect(result2).toBe(false);
+    expect(result2).toBe(true);
     expect(result3).toBe(false);
-    expect(result4).toBe(false);
   });
 });
